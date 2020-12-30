@@ -3,63 +3,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>form请求</title>
+    <script>
+    </script>
 </head>
 
 <body>
-
-<button οnclick="f1()">配置</button>
 <script>
-
     function f1(){
-        alert("hello world")
-    }
-
-    function form1() {
-
-        var xhr = new XMLHttpRequest()
-
-// 初始化一个form对象
-
-        var form = new FormData()
-
-        form.append('name', '张三')
-
-        form.append('age', '21')
-
-        form.append('fond', '玩耍')
-
-// 创建post接口，
-        xhr.open('post', '/config')
-// 发送数据
-        xhr.send(form)
-        xhr.onreadystatechange = function () {
-
-            if (xhr.readyState == 4) {
-
-                console.log(xhr.responseText)
-
+        $.ajax({
+            type: "post",
+            async: true,
+            url: "/config",
+            data: {hello: "world"},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
             }
-
-        }
-
+        })
     }
-
-
-
 </script>
-
-
-
+<button onclick="f1()">配置</button>
 </body>
-
-
-
 </html>
 
 
